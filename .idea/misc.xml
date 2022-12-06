@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/REMIND/app/src/main/res/drawable-v24/ic_date.xml" value="0.1495" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/drawable/bg.xml" value="0.1495" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/drawable/bgfill.xml" value="0.219" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/drawable/plus.xml" value="0.219" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/drawable/task.xml" value="0.1495" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/layout/fragment_add_task.xml" value="0.25" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/layout/fragment_home_screen.xml" value="0.264" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/layout/fragment_splash_screen.xml" value="0.264" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/layout/task_item.xml" value="0.25" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/menu/popup_menu.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Embedded JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
