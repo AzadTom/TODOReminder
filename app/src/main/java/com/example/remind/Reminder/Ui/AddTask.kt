@@ -12,20 +12,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.workDataOf
-import com.example.remind.R
 import com.example.remind.Reminder.Model.Task
-import com.example.remind.Reminder.Utils.TaskWorker
+import com.example.remind.Reminder.Service.AlarmService
 import com.example.remind.Reminder.Viewmodal.TaskViewModel
 import com.example.remind.databinding.FragmentAddTaskBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import java.util.*
-import java.util.concurrent.TimeUnit
-import kotlin.coroutines.coroutineContext
+import kotlin.math.min
 
 
 class AddTask : Fragment() {
@@ -37,11 +29,8 @@ class AddTask : Fragment() {
     private var mDay = 0
     private var mHour = 0
     private var mMinute = 0
-    private var chooseyear = 0
-    private var chooseMonth = 0
-    private var chooseDay = 0
-    private var chooseHour = 0
-    private var chooseMinute = 0
+    private lateinit var alarmService: AlarmService
+    private lateinit var mcalendar: Calendar
     private val sharedViewModel by activityViewModels<TaskViewModel>()
 
     override fun onCreateView(
@@ -50,7 +39,8 @@ class AddTask : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentAddTaskBinding.inflate(inflater, container, false)
-
+        alarmService = AlarmService(requireContext())
+        mcalendar = Calendar.getInstance()
 
         listener()
         return binding.root
@@ -63,7 +53,9 @@ class AddTask : Fragment() {
         }
         binding.tilDate.setOnClickListener{
 
-            getDate()
+             getDate()
+
+
         }
         binding.buttonNewTask.setOnClickListener{
 
@@ -78,8 +70,6 @@ class AddTask : Fragment() {
           Navigation.findNavController(it).popBackStack()
         }
     }
-
-
 
 
 
@@ -100,9 +90,8 @@ class AddTask : Fragment() {
             requireContext(),
             OnTimeSetListener { view, hourOfDay, minute ->
                 binding.tilTimer.text = "$hourOfDay:$minute"
-                chooseHour =hourOfDay
-                chooseMinute = minute
-
+                mcalendar.set(Calendar.HOUR_OF_DAY,hourOfDay)
+                mcalendar.set(Calendar.MINUTE, minute)
             },
             mHour,
             mMinute,
@@ -127,10 +116,10 @@ class AddTask : Fragment() {
             requireContext(),
             OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
-                binding.tilDate.text = dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
-                chooseMonth = monthOfYear
-                chooseDay = dayOfMonth
-                chooseyear = year
+                binding.tilDate.text = dayOfMonth.toString() + "-" + (monthOfYear) + "-" + year
+                mcalendar.set(Calendar.YEAR,year)
+                mcalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+                mcalendar.set(Calendar.MONTH,monthOfYear)
 
             }, myear, mMonth, mDay
         )
@@ -140,11 +129,13 @@ class AddTask : Fragment() {
     private fun addTask() {
 
 
+
+        alarmService.setExact(mcalendar.timeInMillis,binding.tilTitle.text.toString())
         val task = Task(id = null,binding.tilTitle.text.toString(),binding.tilDate.text.toString(),binding.tilTimer.text.toString())
 
         sharedViewModel.insertTask(task)
 
-        Toast.makeText(requireContext(), "Task save successfully!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Set Reminder!", Toast.LENGTH_SHORT).show()
         Navigation.findNavController(requireView()).popBackStack()
 
 
