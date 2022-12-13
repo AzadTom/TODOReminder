@@ -29,7 +29,7 @@ In this Project I have used LocalNotification & alarmmanager  to make this featu
 
 * You can Install and test latest  AddBill Android App from below 👇
 
-[![REMINDER](https://img.shields.io/badge/AddBill-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/AzadTom/TODOReminder/raw/master/app/release/app-release.apk)
+[![REMINDER](https://img.shields.io/badge/REMINDER-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/AzadTom/TODOReminder/raw/master/app/release/app-release.apk)
 
 <p align="center">
     <img  src="https://github.com/AzadTom/TODOReminder/blob/master/app/src/main/assets/01%20(1).jpg">
