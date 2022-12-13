@@ -12,8 +12,9 @@
         <entry key="..\:/Users/REMIND/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/REMIND/app/src/main/res/layout/fragment_add_task.xml" value="0.25" />
         <entry key="..\:/Users/REMIND/app/src/main/res/layout/fragment_home_screen.xml" value="0.264" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Users/REMIND/app/src/main/res/layout/fragment_splash_screen.xml" value="0.264" />
-        <entry key="..\:/Users/REMIND/app/src/main/res/layout/task_item.xml" value="0.25" />
+        <entry key="..\:/Users/REMIND/app/src/main/res/layout/task_item.xml" value="0.536" />
         <entry key="..\:/Users/REMIND/app/src/main/res/menu/popup_menu.xml" value="0.25" />
       </map>
     </option>

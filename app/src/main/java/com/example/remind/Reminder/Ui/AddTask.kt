@@ -12,12 +12,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import com.example.remind.Reminder.LocalNotification.NotificationHelper
 import com.example.remind.Reminder.Model.Task
 import com.example.remind.Reminder.Service.AlarmService
 import com.example.remind.Reminder.Viewmodal.TaskViewModel
 import com.example.remind.databinding.FragmentAddTaskBinding
 import java.util.*
-import kotlin.math.min
 
 
 class AddTask : Fragment() {
@@ -130,10 +130,11 @@ class AddTask : Fragment() {
 
 
 
-        alarmService.setExact(mcalendar.timeInMillis,binding.tilTitle.text.toString())
-        val task = Task(id = null,binding.tilTitle.text.toString(),binding.tilDate.text.toString(),binding.tilTimer.text.toString())
+        alarmService.setExact(mcalendar.timeInMillis,binding.tilTitle.text.toString(),NotificationHelper.NOTIFICATION_ID)
+        val task = Task(id = null,NotificationHelper.NOTIFICATION_ID,binding.tilTitle.text.toString(),binding.tilDate.text.toString(),binding.tilTimer.text.toString())
 
         sharedViewModel.insertTask(task)
+        NotificationHelper.NOTIFICATION_ID++
 
         Toast.makeText(requireContext(), "Set Reminder!", Toast.LENGTH_SHORT).show()
         Navigation.findNavController(requireView()).popBackStack()

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_splashScreen_to_homeScreen"
             app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_splashScreen_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
@@ -30,6 +33,15 @@
         tools:layout="@layout/fragment_add_task" >
         <action
             android:id="@+id/action_addTask_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.remind.Reminder.Ui.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_homeScreen"
             app:destination="@id/homeScreen" />
     </fragment>
 </navigation>

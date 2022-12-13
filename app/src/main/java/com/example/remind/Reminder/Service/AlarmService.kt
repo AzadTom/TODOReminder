@@ -14,13 +14,14 @@ class AlarmService(private val context: Context) {
 
 
     //exact alarm
-    fun setExact(timeMills: Long, message: String) {
+    fun setExact(timeMills: Long, message: String, notificationId: Int) {
 
         setAlarm(timeMills, getPendingIntent(
             getIntent().apply {
                 action = Constans.ACTION_SET_EXACT_ALARM
                 putExtra(Constans.ACTION_SET_EXACT_ALARM,timeMills)
                 putExtra(Constans.MESSAGE,message)
+                putExtra(Constans.NOTIFICATIONID,notificationId)
                  }
               )
         )

@@ -14,6 +14,7 @@ class Constans{
         const val ACTION_SET_EXACT_ALARM = "ACTION_SET_EXACT_ALARM"
         const val ACTION_SET_REPETITIVE_ALARM = "ACTION_SET_REPETITIVE_ALARM"
         const val MESSAGE ="MESSAGE"
+        const val NOTIFICATIONID ="NOTIFICATIONID"
 
     }
 

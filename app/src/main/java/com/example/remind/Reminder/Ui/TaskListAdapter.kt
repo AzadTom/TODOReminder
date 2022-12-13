@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
@@ -12,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.remind.R
 import com.example.remind.Reminder.Model.Task
 import com.example.remind.databinding.TaskItemBinding
+import java.util.ArrayList
 
-class TaskListAdapter(private val context: Context) :
-    ListAdapter<Task, TaskListAdapter.taskViewholder>(diffcallback) {
+class TaskListAdapter(private val context: Context) : ListAdapter<Task, TaskListAdapter.taskViewholder>(diffcallback){
 
 
     var listenerEdit: (Task) -> Unit = {}
@@ -35,6 +37,13 @@ class TaskListAdapter(private val context: Context) :
         holder.bind(getItem(position))
 
 
+
+
+    }
+
+    fun updateList(temp: List<Task>) {
+
+       super.submitList(temp)
 
 
     }
@@ -87,5 +96,9 @@ class TaskListAdapter(private val context: Context) :
         }
 
     }
+
+
+
+
 }
 

@@ -18,7 +18,7 @@ import com.example.remind.Reminder.Ui.HomeScreen
 import com.example.remind.Reminder.Utils.Constans
 
 
-class AlarmReceiver() : BroadcastReceiver() {
+class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
 
@@ -30,7 +30,8 @@ class AlarmReceiver() : BroadcastReceiver() {
                 createNotification(
                     context,
                     "REMIND",
-                    intent.getStringExtra(Constans.MESSAGE).toString()
+                    intent.getStringExtra(Constans.MESSAGE).toString(),
+                    intent.getIntExtra(Constans.NOTIFICATIONID,0)
                 )
 
             }
@@ -42,7 +43,7 @@ class AlarmReceiver() : BroadcastReceiver() {
     private fun createNotificationChannel(context: Context) {
 
 
-        val vibrate = longArrayOf(100, 500, 100, 500, 100, 500)
+        val vibrate = longArrayOf(200, 500, 200, 500, 200, 500)
         val audioAttributes = AudioAttributes.Builder()
             .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
             .setUsage(AudioAttributes.USAGE_ALARM)
@@ -50,7 +51,7 @@ class AlarmReceiver() : BroadcastReceiver() {
 
         val sound = Uri.parse(
             "android.resource://"
-                    + context.getPackageName() + "/" + R.raw.minimal
+                    + context.packageName + "/" + R.raw.notification
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -81,7 +82,7 @@ class AlarmReceiver() : BroadcastReceiver() {
     }
 
 
-    fun createNotification(context: Context, title: String, message: String) {
+    fun createNotification(context: Context, title: String, message: String , notificationId:Int) {
         // 1
         createNotificationChannel(context)
         // 2
@@ -95,33 +96,27 @@ class AlarmReceiver() : BroadcastReceiver() {
             PendingIntent.FLAG_IMMUTABLE
         )
 
-        val sound = Uri.parse(
-            "android.resource://"
-                    + context.getPackageName() + "/" + R.raw.notification
-        )
+
         val builder = NotificationCompat.Builder(context, NotificationHelper.CHANNEL_ID)
             .setContentTitle(title)
             .setContentText(message)
             .setContentIntent(pendingIntent)
             .setSmallIcon(R.drawable.icon)
-            .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
-            .setSound(sound)
             .build()
 
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        notificationManager.notify(
-            System.currentTimeMillis().toInt(),
-            builder
-        )
-       
-        NotificationHelper.NOTIFICATION_ID++
+        notificationManager.notify(notificationId, builder)
+
+
+
 
 
     }
+
+
 
 
 }

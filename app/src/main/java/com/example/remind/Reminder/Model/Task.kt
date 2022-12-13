@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class Task(
     @PrimaryKey(autoGenerate = true)
     var id: Int?,
+    var notificationid:Int,
     var taskDescription:String,
     var date:String,
     var time:String
