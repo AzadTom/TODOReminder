@@ -166,13 +166,13 @@ class HomeScreen : Fragment() {
         })
     }
 
-    private fun filter(text: String) {
+    private fun filter(search: String) {
 
         val temp: ArrayList<Task> = ArrayList()
 
         for (i in list) {
 
-            if (i.taskDescription.lowercase().contains(text.lowercase())) {
+            if (i.taskDescription.lowercase().contains(search.lowercase())) {
                 temp.add(i)
 
 
