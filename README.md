@@ -1,5 +1,6 @@
-#REMINDER
-#This Reminder Projects application is quite simple and may be used to set reminders according on your needs. Making this has helped me gain knowledge of local notification &  Alarm Manager.
+# REMINDER
+
+# This Reminder Projects application is quite simple and may be used to set reminders according on your needs. Making this has helped me gain knowledge of local notification &  Alarm Manager.
 if you want to make somethhing intersting you have to learn it at very basic level.
 
 <p align="center">
